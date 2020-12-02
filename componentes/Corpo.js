@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Image, View } from 'react-native'
+import {style} from '../componentes/css/index'
 
 export class Corpo extends Component {
     render() {
@@ -7,7 +8,9 @@ export class Corpo extends Component {
             uri: "https://i.pinimg.com/280x280_RS/01/4e/14/014e144ab4dcf653391380fa5e469bd7.jpg"
         }
         return (
-            <Image source={foto} style={{width: 400, height: 400}} />
+            <View style={style.container}>
+                <Image source={foto} style={style.foto} resizeMode="cover"/>
+            </View>
         )
     }
 }
