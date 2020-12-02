@@ -25,7 +25,7 @@ const style = StyleSheet.create({
     },
 
     foto: {
-        borderRadius: "100%",
+        borderRadius: 100,
         width: 200,
         height: 200,
         margin: 20,
