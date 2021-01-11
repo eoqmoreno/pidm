@@ -1,41 +1,37 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import { styles } from './style/index'
+import { StyleSheet, Text, View } from 'react-native'
+import {style} from './style/';
+
 
 export class IMCMsg extends Component {
-    constructor(props) {
+    constructor(props){
         super(props)
     }
     render() {
-        let msg = "";
-        let style = "";
-        if (this.props.imc < 17 && this.props.imc > 0) {
-            msg = "Muito abaixo do peso"
-            style = <Text style={styles.diferente}>{msg}</Text>
-        } else if (this.props.imc >= 17 && this.props.imc <= 18.49) {
-            msg = "Abaixo do peso"
-            style = <Text style={styles.diferente}>{msg}</Text>
-        } else if (this.props.imc >= 18.5 && this.props.imc <= 24.99) {
-            msg = "Peso normal"
-            style = <Text style={styles.normal}>{msg}</Text>
-        } else if (this.props.imc >= 25 && this.props.imc <= 29.99) {
-            msg = "Acima do peso"
-            style = <Text style={styles.diferente}>{msg}</Text>
-        } else if (this.props.imc >= 30 && this.props.imc <= 34.99) {
-            msg = "Obesidade 1"
-            style = <Text style={styles.diferente}>{msg}</Text>
-        } else if (this.props.imc >= 35 && this.props.imc <= 39.99) {
-            msg = "Obesidade 2 (severa)"
-            style = <Text style={styles.diferente}>{msg}</Text>
-        } else if (this.props.imc >= 40 && this.props.imc > 0) {
-            msg = "Obesidade 3 (mórbida)"
-            style = <Text style={styles.diferente}>{msg}</Text>
+        let imc = this.props.imc;
+        let situacao = "";
+        let css = style.situacao;
+        if(imc < 17 && imc != ""){
+            situacao = "Muito abaixo do peso";
+        } else if (imc > 17 && imc < 18.49){
+            situacao = "Abaixo do peso";
+        } else if (imc > 18.5 && imc < 24.99){
+            situacao = "Peso normal";
+            css = style.normal;
+        } else if (imc > 25 && imc < 29.99){
+            situacao = "Acima do peso";
+        } else if (imc > 30 && imc < 34.99){
+            situacao = "Obesidade 1";
+        } else if (imc > 35 && imc < 39.99){
+            situacao = "Obesidade 2";
+        } else if(imc > 40){
+            situacao = "Obesidade 3";
         }
-        
+
         return (
             <View>
-                <Text>
-                    {style}
+                <Text style={css}>
+                    {situacao}
                 </Text>
             </View>
         )

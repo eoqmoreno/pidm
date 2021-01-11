@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import IMCMsg from './IMCMsg';
-import { styles } from './style/index'
+import { StyleSheet, Text, View } from 'react-native'
+import IMCMsg from './IMCMsg'
+import {style} from './style/';
 
 export class IMCCalc extends Component {
-    constructor(props) {
+    constructor(props){
         super(props)
     }
-
-
     render() {
         let imc = ""
-        if (this.props.altura != null && this.props.peso != null) {
-            imc = Number(this.props.peso / (this.props.altura * this.props.altura)).toFixed(2)
+        if(this.props.peso){
+            imc = this.props.peso/(this.props.altura*this.props.altura) 
         }
-
         return (
             <View>
-                <Text style={styles.negrito}>
-                    {imc}
+                <Text style={style.text}>
+                    Seu IMC é: {imc}
                 </Text>
                 <IMCMsg imc={imc}></IMCMsg>
             </View>

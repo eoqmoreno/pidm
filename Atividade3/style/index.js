@@ -1,32 +1,44 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
-        backgroundColor: '#ffffff',
+        justifyContent: "center",
         alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: "#e5e5e5",
+    },
+    input: {
+        height: 45,
+        width: "95%",
+        borderColor: "gray",
+        borderWidth: 2,
+        paddingLeft:20,
+    },
+    button: {
+        width:"93%",
+        margin: 15,
+        backgroundColor: "red"
     },
     text: {
-        marginBottom: 10,
-        borderBottomColor: "black",
-        borderBottomWidth: 1,
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        fontWeight: 'bold',
     },
-    negrito: {
-        fontWeight: "bold",
-        fontSize: 25,
+    situacao: {
+        color: "red",
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        fontWeight: 'bold',
     },
     normal: {
-        fontWeight: "bold",
-        fontSize: 25,
         color: "blue",
-    },
-    diferente: {
-        fontWeight: "bold",
-        fontSize: 25,
-        color: "red",
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        fontWeight: 'bold',
     }
 })
 
-export { styles }
+export {style}

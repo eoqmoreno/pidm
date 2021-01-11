@@ -1,45 +1,53 @@
 import React, { Component } from 'react'
-import { Button, Text, TextInput, View } from 'react-native'
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import IMCCalc from './IMCCalc';
-import { styles } from './style/index'
+import {style} from './style/';
 
 export class IMCApp extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            peso: null,
-            altura: null,
-            pesoFinal: null,
-            alturaFinal: null,
+            pesoEstado: 0,
+            alturaEstado: 0.0,
+            pesoChange: 0,
+            alturaChange: 0.0,
         }
     }
 
-    calcular = () => {
+    mudarPeso(peso) {
+        this.setState({ pesoChange: peso });
+    }
+
+    mudarAltura(altura) {
+        this.setState({ alturaChange: altura });
+    }
+
+    calcular(){
         this.setState({
-            pesoFinal: this.state.peso,
-            alturaFinal: this.state.altura,
+            alturaEstado: this.state.alturaChange,
+            pesoEstado: this.state.pesoChange,
         })
     }
 
     render() {
         return (
-            <View>
-                <TextInput placeholder="Altura (m)" style={styles.text}
-                    onChangeText={
-                        // (altura) => { altura = altura; console.log(altura)}
-                        (altura) => { this.setState({ altura }) }
-                    }></TextInput>
-                <TextInput placeholder="Peso (kg)" style={styles.text}
-                    onChangeText={
-                        (peso) => { this.setState({ peso }) }
-                    }></TextInput>
-                <Button title="Calcular" onPress={() => {
-                    this.calcular()
-                }}></Button>
-
-                <Text>
-                    <IMCCalc altura={this.state.alturaFinal} peso={this.state.pesoFinal}></IMCCalc>
+            <View style={style.container}>
+                <Text style={style.text}>
+                    Calculadora de IMC
                 </Text>
+
+                <TextInput placeholder="Altura (M)" style={style.input}
+                    onChangeText={(altura) => this.mudarAltura(altura)}>
+                </TextInput>
+
+                <TextInput placeholder="Peso (Kg)" style={style.input}
+                    onChangeText={(peso) => this.mudarPeso(peso)}>
+                </TextInput>
+
+                <Button title="Calcular" onPress={()=>this.calcular()} style={style.button}>
+                </Button>
+
+                <IMCCalc peso={this.state.pesoEstado} altura={this.state.alturaEstado}></IMCCalc>
             </View>
         )
     }
